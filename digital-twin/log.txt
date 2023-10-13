@@ -1,0 +1,40 @@
+[01:30:47.16] - *** STARTING EXECUTION ***
+[01:30:47.18] - Hopper > Published hopper state: 'PerformingCalibration'
+[01:30:47.18] - Blender > Produced blender state: 'AddingColoringAgents'
+[01:30:47.18] - Blender > Starting to consume
+[01:30:47.18] - Blender received: PerformingCalibration
+[01:30:47.18] - Extruder > Produced extruder state: 'ShapingPlasticBottles'
+[01:30:47.18] - Extruder > Starting to consume
+[01:30:47.18] - Extruder received: AddingColoringAgents
+[01:30:47.68] - Blender received: ShapingPlasticBottles
+[01:30:47.78] - Extruder > Produced extruder state: 'ReadyForShipment'
+[01:30:47.78] - Extruder received: ReadyForShipment
+[01:30:47.98] - Blender > Produced blender state: 'PouringPlasticMixture'
+[01:30:48.18] - Hopper > Published hopper state: 'InitializingSelfCheck'
+[01:30:48.18] - Blender received: PouringPlasticMixture
+[01:30:48.28] - Extruder received: InitializingSelfCheck
+[01:30:48.38] - Extruder > Produced extruder state: 'ReadyForShipment'
+[01:30:48.68] - Blender received: ReadyForShipment
+[01:30:48.78] - Blender > Produced blender state: 'CoolingDown'
+[01:30:48.79] - Extruder received: CoolingDown
+[01:30:48.99] - Extruder > Produced extruder state: 'LabelingProducts'
+[01:30:49.18] - Hopper > Published hopper state: 'InitializingSelfCheck'
+[01:30:49.18] - Blender received: LabelingProducts
+[01:30:49.29] - Extruder received: InitializingSelfCheck
+[01:30:49.59] - Blender > Produced blender state: 'AddingColoringAgents'
+[01:30:49.59] - Extruder > Produced extruder state: 'PackagingPlasticBottles'
+[01:30:49.69] - Blender received: AddingColoringAgents
+[01:30:49.79] - Extruder received: PackagingPlasticBottles
+[01:30:50.19] - Hopper > Published hopper state: 'IdleState'
+[01:30:50.19] - Blender received: IdleState
+[01:30:50.19] - Extruder > Produced extruder state: 'QualityControlChecks'
+[01:30:50.30] - Extruder received: QualityControlChecks
+[01:30:50.39] - Blender > Produced blender state: 'PouringPlasticMixture'
+[01:30:50.69] - Blender received: PouringPlasticMixture
+[01:30:50.79] - Extruder > Produced extruder state: 'QualityControlChecks'
+[01:30:50.80] - Extruder received: QualityControlChecks
+[01:30:51.19] - Hopper > Published hopper state: 'DispensingBluePellets'
+[01:30:51.19] - Blender > Produced blender state: 'MixingPlasticAndChemicals'
+[01:30:51.19] - Blender received: DispensingBluePellets
+[01:30:51.30] - Extruder received: MixingPlasticAndChemicals
+[01:30:51.40] - Extruder > Produced extruder state: 'LabelingProducts'
