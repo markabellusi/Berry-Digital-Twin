@@ -7,18 +7,32 @@
     using System.Threading.Tasks;
     using System.Threading.Channels;
 
-    namespace BerryTwinProducerConsumerModel
+    class Program
     {
-        class Program
+        static async Task Main(string[] args)
         {
-            static async Task Main(string[] args)
-            {
-                await RunHopperBlenderAndExtruder();
+            await RunHopperBlenderAndExtruder();
 
-                Logger.Log("done!");
-                Console.ReadLine();
-            }
-
+            Logger.Log("done!");
+            Console.ReadLine();
+        }
+/* Trying something for error handling here -Mark
+   private static async Task HandleErrorsAsync(Func<Task> taskFunction, string componentName)
+    {
+        try
+        {
+            await taskFunction.Invoke();
+        }
+        catch (OperationCanceledException)
+        {
+            Logger.Log($"{componentName} was interrupted.", ConsoleColor.Magenta);
+        }
+        catch (Exception ex)
+        {
+            Logger.LogError($"{componentName} error: {ex.Message}", ConsoleColor.Red);
+        }
+    }
+*/
             private static async Task RunHopperBlenderAndExtruder()
             {
                 Logger.Log("*** STARTING EXECUTION ***");
@@ -47,49 +61,104 @@
 
                 Logger.Log("*** EXECUTION COMPLETE ***");
             }
+/* Trying something for error handling here again -Mark
+private static async Task RunHopperBlenderAndExtruder()
+{
+    Logger.Log("*** STARTING EXECUTION ***");
+
+    // Create a bounded channel with a buffer size of 10.
+    var channel = Channel.CreateBounded<Envelope>(10);
+
+    var tokenSource = new CancellationTokenSource();
+    var cancellationToken = tokenSource.Token;
+
+    var tasks = new List<Task>
+    {
+        HandleErrorsAsync(() => HopperProducerAsync(channel, cancellationToken), "Hopper"),
+        HandleErrorsAsync(() => BlenderProducerAsync(channel, cancellationToken), "Blender"),
+        HandleErrorsAsync(() => BlenderConsumerAsync(channel, cancellationToken), "Blender"),
+        HandleErrorsAsync(() => ExtruderProducerAsync(channel, cancellationToken), "Extruder"),
+        HandleErrorsAsync(() => ExtruderConsumerAsync(channel, cancellationToken), "Extruder")
+    };
+
+    await Task.WhenAll(tasks);
+
+    Logger.Log("*** EXECUTION COMPLETE ***");
+}
+*/
+
 
             private static async Task HopperProducerAsync(Channel<Envelope> channel, CancellationToken cancellationToken)
             {
-                // Create a Hopper producer instance.
-                var hopper = new HopperProducer(channel.Writer, "Hopper");
+                try
+                    {
+                    // Create a Hopper producer instance.
+                    var hopper = new HopperProducer(channel.Writer, "Hopper");
 
-                // Define possible Hopper states.
-                var hopperStates = Enum.GetValues(typeof(HopperState)).Cast<HopperState>().ToList();
+                    // Define possible Hopper states.
+                    var hopperStates = Enum.GetValues(typeof(HopperState)).Cast<HopperState>().ToList();
 
-                Random random = new Random();
+                    Random random = new Random();
 
-                while (!cancellationToken.IsCancellationRequested)
+                    while (!cancellationToken.IsCancellationRequested)
+                    {
+                        // Generate a random Hopper state.
+                        var hopperState = hopperStates[random.Next(hopperStates.Count)];
+                        // Publish the Hopper data to the channel.
+                        await hopper.PublishHopperStateAsync(hopperState, cancellationToken);
+                        // Simulate some work.
+                        await Task.Delay(1000, cancellationToken);
+                    }
+                    }
+
+                catch (OperationCanceledException)
                 {
-                    // Generate a random Hopper state.
-                    var hopperState = hopperStates[random.Next(hopperStates.Count)];
-                    // Publish the Hopper data to the channel.
-                    await hopper.PublishHopperStateAsync(hopperState, cancellationToken);
-                    // Simulate some work.
-                    await Task.Delay(1000, cancellationToken);
+                    // Handle operation cancellation.
+                    Logger.Log("Hopper was interrupted.", ConsoleColor.Magenta);
+                }
+                catch (Exception ex)
+                {
+                    // Handle the error when Blender produces too much.
+                    Logger.LogError($"Hopper error: {ex.Message}");
                 }
 
                 // Log that Hopper is done producing.
                 Logger.Log("Hopper is done producing.", ConsoleColor.Blue);
+                
             }
 
             private static async Task BlenderProducerAsync(Channel<Envelope> channel, CancellationToken cancellationToken)
             {
-                // Create a Blender producer instance.
-                var blender = new BlenderProducer(channel.Writer, "Blender");
-
-                // Define possible Blender states.
-                var blenderStates = Enum.GetValues(typeof(BlenderState)).Cast<BlenderState>().ToList();
-
-                Random random = new Random();
-
-                while (!cancellationToken.IsCancellationRequested)
+                try
                 {
-                    // Generate a random Blender state.
-                    var blenderState = blenderStates[random.Next(blenderStates.Count)];
-                    // Produce the Blender state message and publish it to the channel.
-                    await blender.ProduceBlenderStateAsync(blenderState, cancellationToken);
-                    // Simulate some work.
-                    await Task.Delay(800, cancellationToken);
+                    // Create a Blender producer instance.
+                    var blender = new BlenderProducer(channel.Writer, "Blender");
+
+                    // Define possible Blender states.
+                    var blenderStates = Enum.GetValues(typeof(BlenderState)).Cast<BlenderState>().ToList();
+
+                    Random random = new Random();
+
+                    while (!cancellationToken.IsCancellationRequested)
+                    {
+                        // Generate a random Blender state.
+                        var blenderState = blenderStates[random.Next(blenderStates.Count)];
+                        // Produce the Blender state message and publish it to the channel.
+                        await blender.ProduceBlenderStateAsync(blenderState, cancellationToken);
+                        // Simulate some work.
+                        await Task.Delay(800, cancellationToken);
+                    }
+
+                }
+                catch (OperationCanceledException)
+                {
+                    // Handle operation cancellation.
+                    Logger.Log("Blender was interrupted.", ConsoleColor.Magenta);
+                }
+                catch (Exception ex)
+                {
+                    // Handle the error when Blender produces too much.
+                    Logger.Log($"Blender error: {ex.Message}", ConsoleColor.Red);
                 }
 
                 Logger.Log("Blender is done producing.", ConsoleColor.Blue);
@@ -100,7 +169,7 @@
                 // Create a Blender consumer instance.
                 var blender = new BlenderConsumer(channel.Reader, "Blender");
                 int consumedCount = 0;
-                int maxConsumedCount = 20; // Maximum messages Blender can consume
+                int maxConsumedCount = 10; // Maximum messages Blender can consume
 
                 try
                 {
@@ -136,6 +205,8 @@
 
             private static async Task ExtruderProducerAsync(Channel<Envelope> channel, CancellationToken cancellationToken)
             {
+                try
+                {
                 // Create an Extruder producer instance.
                 var extruder = new ExtruderProducer(channel.Writer, "Extruder");
 
@@ -152,6 +223,18 @@
                     await extruder.ProduceExtruderStateAsync(extruderState, cancellationToken);
                     // Simulate some work.
                     await Task.Delay(600, cancellationToken);
+                }
+                }
+
+                catch (OperationCanceledException)
+                {
+                    // Handle operation cancellation.
+                    Logger.Log("Extruder was interrupted.", ConsoleColor.Magenta);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    // Handle the error when Extruder produces too much.
+                    Logger.Log($"Extruder error: {ex.Message}", ConsoleColor.Red);
                 }
 
                 // Log that Extruder is done producing.
@@ -179,6 +262,12 @@
                         }
                     }
                 }
+                
+                catch (OperationCanceledException)
+                {
+                    // Handle operation cancellation.
+                    Logger.Log("Extruder was interrupted.", ConsoleColor.Magenta);
+                }
                 catch (InvalidOperationException ex)
                 {
                     // Handle the simulated error in Extruder.
@@ -191,8 +280,6 @@
 
                 // If an error occurred in Extruder, set the cancellation token to stop the other producers.
 
-                // cntrl + k + c  comments out
-                // cntrl + k + u uncomments
                 //if (errorOccurred)
                 //{
                 //    tokenSource.Cancel();
@@ -200,194 +287,5 @@
             }
         }
 
-        public class HopperProducer
-        {
-            private readonly ChannelWriter<Envelope> _writer;
-            private readonly string _name;
 
-            public HopperProducer(ChannelWriter<Envelope> writer, string name)
-            {
-                _writer = writer;
-                _name = name;
-            }
-
-            public async Task PublishHopperStateAsync(HopperState hopperState, CancellationToken cancellationToken = default)
-            {
-                var message = new Envelope(Enum.GetName(typeof(HopperState), hopperState));
-                // Publish the Hopper state message to the channel.
-                await _writer.WriteAsync(message, cancellationToken);
-                Logger.Log($"{_name} > Published hopper state: '{Enum.GetName(typeof(HopperState), hopperState)}'", ConsoleColor.Yellow);
-            }
-        }
-
-        public enum HopperState
-        {
-            DispensingBluePellets,
-            InitializingSelfCheck,
-            ProcessingData,
-            PerformingCalibration,
-            MonitoringEnvironment,
-            EngagingSensors,
-            AnalyzingDataStreams,
-            GeneratingReports,
-            PreparingForNextTask,
-            IdleState
-        }
-
-        public class BlenderProducer
-        {
-            private readonly ChannelWriter<Envelope> _writer;
-            private readonly string _name;
-
-            public BlenderProducer(ChannelWriter<Envelope> writer, string name)
-            {
-                _writer = writer;
-                _name = name;
-            }
-
-            public async Task ProduceBlenderStateAsync(BlenderState blenderState, CancellationToken cancellationToken = default)
-            {
-                var message = new Envelope(Enum.GetName(typeof(BlenderState), blenderState));
-                // Produce the Blender state message and publish it to the channel.
-                await _writer.WriteAsync(message, cancellationToken);
-                Logger.Log($"{_name} > Produced blender state: '{Enum.GetName(typeof(BlenderState), blenderState)}'", ConsoleColor.Cyan);
-            }
-        }
-
-        public enum BlenderState
-        {
-            MixingPlasticAndChemicals,
-            AdjustingTemperature,
-            AddingColoringAgents,
-            MeltingPlasticMixture,
-            QualityControlChecks,
-            PouringPlasticMixture,
-            CoolingDown,
-            PackagingFinishedProduct,
-            LabelingProducts,
-            ReadyForShipment
-        }
-
-        public class ExtruderProducer
-        {
-            private readonly ChannelWriter<Envelope> _writer;
-            private readonly string _name;
-
-            public ExtruderProducer(ChannelWriter<Envelope> writer, string name)
-            {
-                _writer = writer;
-                _name = name;
-            }
-
-            public async Task ProduceExtruderStateAsync(ExtruderState extruderState, CancellationToken cancellationToken = default)
-            {
-                var message = new Envelope(Enum.GetName(typeof(ExtruderState), extruderState));
-                // Produce the Extruder state message and publish it to the channel.
-                await _writer.WriteAsync(message, cancellationToken);
-                Logger.Log($"{_name} > Produced extruder state: '{Enum.GetName(typeof(ExtruderState), extruderState)}'", ConsoleColor.Magenta);
-            }
-        }
-
-        public enum ExtruderState
-        {
-            MixingPlasticAndChemicals,
-            ShapingPlasticBottles,
-            QualityControlChecks,
-            PackagingPlasticBottles,
-            LabelingProducts,
-            ReadyForShipment
-        }
-
-        // Rest of the code (Logger, Envelope, etc.) remains the same.
     }
-
-    public class BlenderConsumer
-    {
-        private readonly ChannelReader<Envelope> _reader;
-        private readonly string _name;
-
-        public BlenderConsumer(ChannelReader<Envelope> reader, string name)
-        {
-            _reader = reader;
-            _name = name;
-        }
-
-        public async IAsyncEnumerable<Envelope> ConsumeAsync(CancellationToken cancellationToken = default)
-        {
-            Logger.Log($"{_name} > Starting to consume", ConsoleColor.Green);
-
-            await foreach (var message in _reader.ReadAllAsync(cancellationToken))
-            {
-                yield return message;
-            }
-
-            Logger.Log($"{_name} > Stopping consumption", ConsoleColor.Red);
-        }
-    }
-
-    public class ExtruderConsumer
-    { 
-            private readonly ChannelReader<Envelope> _reader;
-            private readonly string _name;
-
-            public ExtruderConsumer(ChannelReader<Envelope> reader, string name)
-            {
-                _reader = reader;
-                _name = name;
-
-            }
-            public async IAsyncEnumerable<Envelope> ConsumeAsync(CancellationToken cancellationToken = default)
-            {
-                Logger.Log($"{_name} > Starting to consume", ConsoleColor.Green);
-
-                await foreach (var message in _reader.ReadAllAsync(cancellationToken))
-                {
-                    yield return message;
-                }
-
-                Logger.Log($"{_name} > Stopping consumption", ConsoleColor.Red);
-            }
-    }
-
-        public class Logger
-        {
-            private static readonly object LockObject = new object();
-            private static readonly string LogFilePath = "log.txt";
-
-            public static void Log(string text, ConsoleColor color = ConsoleColor.White)
-            {
-                lock (LockObject)
-                {
-                    Console.ForegroundColor = color;
-                    string logMessage = $"[{DateTime.UtcNow:hh:mm:ss.ff}] - {text}";
-                    Console.WriteLine(logMessage);
-                    WriteToFile(logMessage);
-                }
-            }
-
-            private static void WriteToFile(string logMessage)
-            {
-                try
-                {
-                    // Append the log message to the log file.
-                    File.AppendAllText(LogFilePath, logMessage + Environment.NewLine);
-                }
-                catch (Exception ex)
-                {
-                    // Handle exceptions related to file writing.
-                    Console.WriteLine($"Error writing to log file: {ex.Message}");
-                }
-            }
-        }
-
-    public class Envelope
-    {
-            public Envelope(string logFile)
-            {
-                LogFile = logFile;
-            }
-
-            public string LogFile { get; }
-    }
-}
-
