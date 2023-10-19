@@ -1,0 +1,14 @@
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/bin/Debug/net7.0/digit-twin-start
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/bin/Debug/net7.0/digit-twin-start.deps.json
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/bin/Debug/net7.0/digit-twin-start.runtimeconfig.json
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/bin/Debug/net7.0/digit-twin-start.dll
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/bin/Debug/net7.0/digit-twin-start.pdb
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/obj/Debug/net7.0/digit-twin-start.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/obj/Debug/net7.0/digit-twin-start.AssemblyInfoInputs.cache
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/obj/Debug/net7.0/digit-twin-start.AssemblyInfo.cs
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/obj/Debug/net7.0/digit-twin-start.csproj.CoreCompileInputs.cache
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/obj/Debug/net7.0/digit-twin-start.dll
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/obj/Debug/net7.0/refint/digit-twin-start.dll
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/obj/Debug/net7.0/digit-twin-start.pdb
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/obj/Debug/net7.0/digit-twin-start.genruntimeconfig.cache
+/Users/mark/Documents/GitHub/c#-practice/digit-twin-start/obj/Debug/net7.0/ref/digit-twin-start.dll
