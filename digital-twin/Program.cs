@@ -9,6 +9,7 @@
 
     class Program
     {
+        private static CancellationTokenSource tokenSource;
         static async Task Main(string[] args)
         {
             await RunHopperBlenderAndExtruder();
@@ -16,31 +17,31 @@
             Logger.Log("done!");
             Console.ReadLine();
         }
-/* Trying something for error handling here -Mark
-   private static async Task HandleErrorsAsync(Func<Task> taskFunction, string componentName)
-    {
-        try
+
+        private static async Task HandleErrorsAsync(Func<Task> taskFunction, string componentName)
         {
-            await taskFunction.Invoke();
+            try
+            {
+                await taskFunction.Invoke();
+            }
+            catch (OperationCanceledException)
+            {
+                Logger.Log($"{componentName} was interrupted.", ConsoleColor.Magenta);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError($"{componentName} error: {ex.Message}", ex);
+            }
         }
-        catch (OperationCanceledException)
-        {
-            Logger.Log($"{componentName} was interrupted.", ConsoleColor.Magenta);
-        }
-        catch (Exception ex)
-        {
-            Logger.LogError($"{componentName} error: {ex.Message}", ConsoleColor.Red);
-        }
-    }
-*/
+
             private static async Task RunHopperBlenderAndExtruder()
             {
                 Logger.Log("*** STARTING EXECUTION ***");
 
                 // Create a bounded channel with a buffer size of 10.
                 var channel = Channel.CreateBounded<Envelope>(10);
-
-                var tokenSource = new CancellationTokenSource();
+            
+                tokenSource = new CancellationTokenSource();
                 var cancellationToken = tokenSource.Token;
 
                 var tasks = new List<Task>
@@ -61,32 +62,6 @@
 
                 Logger.Log("*** EXECUTION COMPLETE ***");
             }
-/* Trying something for error handling here again -Mark
-private static async Task RunHopperBlenderAndExtruder()
-{
-    Logger.Log("*** STARTING EXECUTION ***");
-
-    // Create a bounded channel with a buffer size of 10.
-    var channel = Channel.CreateBounded<Envelope>(10);
-
-    var tokenSource = new CancellationTokenSource();
-    var cancellationToken = tokenSource.Token;
-
-    var tasks = new List<Task>
-    {
-        HandleErrorsAsync(() => HopperProducerAsync(channel, cancellationToken), "Hopper"),
-        HandleErrorsAsync(() => BlenderProducerAsync(channel, cancellationToken), "Blender"),
-        HandleErrorsAsync(() => BlenderConsumerAsync(channel, cancellationToken), "Blender"),
-        HandleErrorsAsync(() => ExtruderProducerAsync(channel, cancellationToken), "Extruder"),
-        HandleErrorsAsync(() => ExtruderConsumerAsync(channel, cancellationToken), "Extruder")
-    };
-
-    await Task.WhenAll(tasks);
-
-    Logger.Log("*** EXECUTION COMPLETE ***");
-}
-*/
-
 
             private static async Task HopperProducerAsync(Channel<Envelope> channel, CancellationToken cancellationToken)
             {
@@ -164,7 +139,54 @@ private static async Task RunHopperBlenderAndExtruder()
                 Logger.Log("Blender is done producing.", ConsoleColor.Blue);
             }
 
-            private static async Task BlenderConsumerAsync(Channel<Envelope> channel, CancellationToken cancellationToken)
+          private static async Task BlenderConsumerAsync(Channel<Envelope> channel, CancellationToken cancellationToken)
+         {
+            // Create a Blender consumer instance.
+            var blender = new BlenderConsumer(channel.Reader, "Blender");
+            bool errorOccurred = false;
+            int consumedCount = 0;
+            int maxConsumedCount = 1; // Change this to control how much the Blender consumes
+
+            try
+            {
+                await foreach (var message in blender.ConsumeAsync(cancellationToken))
+                {
+                    // Log the received message and simulate processing.
+                    Logger.Log($"Blender received: {message.LogFile}");
+                    await Task.Delay(500, cancellationToken);
+
+                    // Simulate an error condition.
+                    consumedCount++;
+                    if (consumedCount > maxConsumedCount)
+                    {
+                        Logger.Log("Simulating an error in Blender.", ConsoleColor.Red);
+                        throw new InvalidOperationException("Blender consumed too much.");
+                    }
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                // Handle operation cancellation.
+                Logger.Log("Blender was interrupted.", ConsoleColor.Magenta);
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Handle the simulated error in Blender.
+                Logger.Log($"Blender error: {ex.Message}", ConsoleColor.Red);
+                errorOccurred = true;
+            }
+
+            // Log that Blender is done consuming.
+            Logger.Log("Blender is done consuming.", ConsoleColor.Blue);
+
+            // If an error occurred in Blender, set the cancellation token to stop the other producers.
+            if (errorOccurred)
+            {
+                tokenSource.Cancel();
+            }
+        }
+
+          /*  private static async Task BlenderConsumerAsync(Channel<Envelope> channel, CancellationToken cancellationToken)
             {
                 // Create a Blender consumer instance.
                 var blender = new BlenderConsumer(channel.Reader, "Blender");
@@ -201,7 +223,7 @@ private static async Task RunHopperBlenderAndExtruder()
                 }
 
                 Logger.Log("Blender is done consuming.");
-            }
+            } */
 
             private static async Task ExtruderProducerAsync(Channel<Envelope> channel, CancellationToken cancellationToken)
             {
@@ -242,49 +264,52 @@ private static async Task RunHopperBlenderAndExtruder()
             }
 
             private static async Task ExtruderConsumerAsync(Channel<Envelope> channel, CancellationToken cancellationToken)
-            {
-                // Create an Extruder consumer instance.
-                var extruder = new ExtruderConsumer(channel.Reader, "Extruder");
-                bool errorOccurred = false;
-                try
-                {
-                    await foreach (var message in extruder.ConsumeAsync(cancellationToken))
-                    {
-                        // Log the received message and simulate processing.
-                        Logger.Log($"Extruder received: {message.LogFile}");
-                        await Task.Delay(500, cancellationToken);
+        {
+            // Create an Extruder consumer instance.
+            var extruder = new ExtruderConsumer(channel.Reader, "Extruder");
+            bool errorOccurred = false;
+            int consumedCount = 0;
+            int maxConsumedCount = 10; // Change this to control how much the Extruder consumes
 
-                        // Simulate an error condition.
-                        if (message.LogFile.Contains("ErrorCondition"))
-                        {
-                            Logger.Log("Simulating an error in Extruder.", ConsoleColor.Red);
-                            throw new InvalidOperationException("Extruder encountered an error.");
-                        }
+            try
+            {
+                await foreach (var message in extruder.ConsumeAsync(cancellationToken))
+                {
+                    // Log the received message and simulate processing.
+                    Logger.Log($"Extruder received: {message.LogFile}");
+                    await Task.Delay(500, cancellationToken);
+
+                    // Simulate an error condition.
+                    consumedCount++;
+                    if (consumedCount > maxConsumedCount)
+                    {
+                        Logger.Log("Simulating an error in Extruder.", ConsoleColor.Red);
+                        throw new InvalidOperationException("Extruder consumed too much.");
                     }
                 }
-                
-                catch (OperationCanceledException)
-                {
-                    // Handle operation cancellation.
-                    Logger.Log("Extruder was interrupted.", ConsoleColor.Magenta);
-                }
-                catch (InvalidOperationException ex)
-                {
-                    // Handle the simulated error in Extruder.
-                    Logger.Log($"Extruder error: {ex.Message}", ConsoleColor.Red);
-                    errorOccurred = true;
-                }
-
-                // Log that Extruder is done consuming.
-                Logger.Log("Extruder is done consuming.", ConsoleColor.Blue);
-
-                // If an error occurred in Extruder, set the cancellation token to stop the other producers.
-
-                //if (errorOccurred)
-                //{
-                //    tokenSource.Cancel();
-                //}
             }
+            catch (OperationCanceledException)
+            {
+                // Handle operation cancellation.
+                Logger.Log("Extruder was interrupted.", ConsoleColor.Magenta);
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Handle the simulated error in Extruder.
+                Logger.Log($"Extruder error: {ex.Message}", ConsoleColor.Red);
+                errorOccurred = true;
+            }
+
+            // Log that Extruder is done consuming.
+            Logger.Log("Extruder is done consuming.", ConsoleColor.Blue);
+
+            // If an error occurred in Extruder, set the cancellation token to stop the other producers.
+            if (errorOccurred)
+            {
+                tokenSource.Cancel();
+            }
+        }
+
         }
 
 
