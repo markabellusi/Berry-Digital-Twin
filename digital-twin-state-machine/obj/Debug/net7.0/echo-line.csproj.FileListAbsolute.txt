@@ -1,0 +1,56 @@
+/Users/mark/Documents/GitHub/c#-practice/echo-line/bin/Debug/net7.0/echo-line
+/Users/mark/Documents/GitHub/c#-practice/echo-line/bin/Debug/net7.0/echo-line.deps.json
+/Users/mark/Documents/GitHub/c#-practice/echo-line/bin/Debug/net7.0/echo-line.runtimeconfig.json
+/Users/mark/Documents/GitHub/c#-practice/echo-line/bin/Debug/net7.0/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line/bin/Debug/net7.0/echo-line.pdb
+/Users/mark/Documents/GitHub/c#-practice/echo-line/obj/Debug/net7.0/echo-line.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mark/Documents/GitHub/c#-practice/echo-line/obj/Debug/net7.0/echo-line.AssemblyInfoInputs.cache
+/Users/mark/Documents/GitHub/c#-practice/echo-line/obj/Debug/net7.0/echo-line.AssemblyInfo.cs
+/Users/mark/Documents/GitHub/c#-practice/echo-line/obj/Debug/net7.0/echo-line.csproj.CoreCompileInputs.cache
+/Users/mark/Documents/GitHub/c#-practice/echo-line/obj/Debug/net7.0/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line/obj/Debug/net7.0/refint/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line/obj/Debug/net7.0/echo-line.pdb
+/Users/mark/Documents/GitHub/c#-practice/echo-line/obj/Debug/net7.0/echo-line.genruntimeconfig.cache
+/Users/mark/Documents/GitHub/c#-practice/echo-line/obj/Debug/net7.0/ref/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/bin/Debug/net7.0/echo-line
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/bin/Debug/net7.0/echo-line.deps.json
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/bin/Debug/net7.0/echo-line.runtimeconfig.json
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/bin/Debug/net7.0/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/bin/Debug/net7.0/echo-line.pdb
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/obj/Debug/net7.0/echo-line.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/obj/Debug/net7.0/echo-line.AssemblyInfoInputs.cache
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/obj/Debug/net7.0/echo-line.AssemblyInfo.cs
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/obj/Debug/net7.0/echo-line.csproj.CoreCompileInputs.cache
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/obj/Debug/net7.0/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/obj/Debug/net7.0/refint/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/obj/Debug/net7.0/echo-line.pdb
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/obj/Debug/net7.0/echo-line.genruntimeconfig.cache
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy/obj/Debug/net7.0/ref/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/obj/Debug/net7.0/echo-line.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/obj/Debug/net7.0/echo-line.AssemblyInfoInputs.cache
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/obj/Debug/net7.0/echo-line.AssemblyInfo.cs
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/obj/Debug/net7.0/echo-line.csproj.CoreCompileInputs.cache
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/obj/Debug/net7.0/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/obj/Debug/net7.0/refint/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/obj/Debug/net7.0/echo-line.pdb
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/bin/Debug/net7.0/echo-line
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/bin/Debug/net7.0/echo-line.deps.json
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/bin/Debug/net7.0/echo-line.runtimeconfig.json
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/bin/Debug/net7.0/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/bin/Debug/net7.0/echo-line.pdb
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/obj/Debug/net7.0/echo-line.genruntimeconfig.cache
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 2/obj/Debug/net7.0/ref/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/bin/Debug/net7.0/echo-line
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/bin/Debug/net7.0/echo-line.deps.json
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/bin/Debug/net7.0/echo-line.runtimeconfig.json
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/bin/Debug/net7.0/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/bin/Debug/net7.0/echo-line.pdb
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/obj/Debug/net7.0/echo-line.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/obj/Debug/net7.0/echo-line.AssemblyInfoInputs.cache
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/obj/Debug/net7.0/echo-line.AssemblyInfo.cs
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/obj/Debug/net7.0/echo-line.csproj.CoreCompileInputs.cache
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/obj/Debug/net7.0/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/obj/Debug/net7.0/refint/echo-line.dll
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/obj/Debug/net7.0/echo-line.pdb
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/obj/Debug/net7.0/echo-line.genruntimeconfig.cache
+/Users/mark/Documents/GitHub/c#-practice/echo-line copy 3/obj/Debug/net7.0/ref/echo-line.dll
