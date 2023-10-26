@@ -66,25 +66,24 @@
             private static async Task HopperProducerAsync(Channel<Envelope> channel, CancellationToken cancellationToken)
             {
                 try
-                    {
+                {
                     // Create a Hopper producer instance.
                     var hopper = new HopperProducer(channel.Writer, "Hopper");
 
-                    // Define possible Hopper states.
-                    var hopperStates = Enum.GetValues(typeof(HopperState)).Cast<HopperState>().ToList();
+                    // Static sequence of Hopper states.
+                    var hopperStates = Enum.GetValues(typeof(HopperState)).Cast<HopperState>().ToArray();
+                    int currentIndex = 0;
 
-                    Random random = new Random();
-
-                    while (!cancellationToken.IsCancellationRequested)
+                   while (!cancellationToken.IsCancellationRequested)
                     {
-                        // Generate a random Hopper state.
-                        var hopperState = hopperStates[random.Next(hopperStates.Count)];
-                        // Publish the Hopper data to the channel.
-                        await hopper.PublishHopperStateAsync(hopperState, cancellationToken);
-                        // Simulate some work.
-                        await Task.Delay(1000, cancellationToken);
+                       // Publish the Hopper data to the channel.
+                       await hopper.PublishHopperStateAsync(hopperStates[currentIndex], cancellationToken);
+                       currentIndex = (currentIndex + 1) % hopperStates.Length; // Move to the next state in a loop.
+                      // Simulate some work.
+                       await Task.Delay(1000, cancellationToken);
                     }
-                    }
+                   
+                }
 
                 catch (OperationCanceledException)
                 {
@@ -109,17 +108,15 @@
                     // Create a Blender producer instance.
                     var blender = new BlenderProducer(channel.Writer, "Blender");
 
-                    // Define possible Blender states.
-                    var blenderStates = Enum.GetValues(typeof(BlenderState)).Cast<BlenderState>().ToList();
-
-                    Random random = new Random();
+                    // Static sequence of Blender states.
+                    var blenderStates = Enum.GetValues(typeof(BlenderState)).Cast<BlenderState>().ToArray();
+                    int currentIndex = 0;
 
                     while (!cancellationToken.IsCancellationRequested)
                     {
-                        // Generate a random Blender state.
-                        var blenderState = blenderStates[random.Next(blenderStates.Count)];
-                        // Produce the Blender state message and publish it to the channel.
-                        await blender.ProduceBlenderStateAsync(blenderState, cancellationToken);
+                         // Produce the Blender state message and publish it to the output channel.
+                        await blender.ProduceBlenderStateAsync(blenderStates[currentIndex], cancellationToken);
+                        currentIndex = (currentIndex + 1) % blenderStates.Length; // Move to the next state in a loop.
                         // Simulate some work.
                         await Task.Delay(800, cancellationToken);
                     }
@@ -145,7 +142,7 @@
             var blender = new BlenderConsumer(channel.Reader, "Blender");
             bool errorOccurred = false;
             int consumedCount = 0;
-            int maxConsumedCount = 1; // Change this to control how much the Blender consumes
+            int maxConsumedCount = 20; // Change this to control how much the Blender consumes
 
             try
             {

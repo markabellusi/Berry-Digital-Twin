@@ -2,37 +2,42 @@ using System.Threading.Channels;
 
 namespace BerryTwinProducerConsumerModel
 {
-    public class BlenderProducer
-    {
+    public class ExtruderProducer
+        {
             private readonly ChannelWriter<Envelope> _writer;
             private readonly string _name;
+            private int totalStates; // Total number of states for calculating completion.
+            private int completedStates; // Number of states completed.
 
-            public BlenderProducer(ChannelWriter<Envelope> writer, string name)
+
+            public ExtruderProducer(ChannelWriter<Envelope> writer, string name)
             {
                 _writer = writer;
                 _name = name;
+                completedStates = 0; // Initialize completed states.
+                totalStates = Enum.GetValues(typeof(ExtruderState)).Length;
             }
 
-            public async Task ProduceBlenderStateAsync(BlenderState blenderState, CancellationToken cancellationToken = default)
+            public async Task ProduceExtruderStateAsync(ExtruderState extruderState, CancellationToken cancellationToken = default)
             {
-                var message = new Envelope(Enum.GetName(typeof(BlenderState), blenderState));
-                // Produce the Blender state message and publish it to the channel.
+                var message = new Envelope(Enum.GetName(typeof(ExtruderState), extruderState));
+                // Produce the Extruder state message and publish it to the channel.
                 await _writer.WriteAsync(message, cancellationToken);
-                Logger.Log($"{_name} > Produced blender state: '{Enum.GetName(typeof(BlenderState), blenderState)}'", ConsoleColor.Cyan);
-            }
-    }
+                // Caculate the compleation percentage and log it 
+                completedStates++;
+                double completionPercentage = (completedStates / (double)totalStates) * 100;
 
-    public enum BlenderState
-    {
-            MixingPlasticAndChemicals,
-            AdjustingTemperature,
-            AddingColoringAgents,
-            MeltingPlasticMixture,
-            QualityControlChecks,
-            PouringPlasticMixture,
-            CoolingDown,
-            PackagingFinishedProduct,
-            LabelingProducts,
-            ReadyForShipment
-    }
+                Logger.Log($"{_name} > Produced extruder state: '{Enum.GetName(typeof(ExtruderState), extruderState)}', Completion: {completionPercentage:F2}%", ConsoleColor.Magenta);
+            }
+        }
+
+        public enum ExtruderState
+        {
+            State_E1,
+            State_E2,
+            State_E3,
+            State_E4,
+            State_E5,
+            productFinished_produced_20_caps  
+        }
 }
