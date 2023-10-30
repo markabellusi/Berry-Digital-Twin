@@ -1,0 +1,14 @@
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/bin/Debug/net7.0/digital-twin-oct30
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/bin/Debug/net7.0/digital-twin-oct30.deps.json
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/bin/Debug/net7.0/digital-twin-oct30.runtimeconfig.json
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/bin/Debug/net7.0/digital-twin-oct30.dll
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/bin/Debug/net7.0/digital-twin-oct30.pdb
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/obj/Debug/net7.0/digital-twin-oct30.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/obj/Debug/net7.0/digital-twin-oct30.AssemblyInfoInputs.cache
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/obj/Debug/net7.0/digital-twin-oct30.AssemblyInfo.cs
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/obj/Debug/net7.0/digital-twin-oct30.csproj.CoreCompileInputs.cache
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/obj/Debug/net7.0/digital-twin-oct30.dll
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/obj/Debug/net7.0/refint/digital-twin-oct30.dll
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/obj/Debug/net7.0/digital-twin-oct30.pdb
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/obj/Debug/net7.0/digital-twin-oct30.genruntimeconfig.cache
+/Users/mark/Documents/GitHub/c#-practice/Berry-Digital-Twin-main/digital-twin-oct30/obj/Debug/net7.0/ref/digital-twin-oct30.dll
