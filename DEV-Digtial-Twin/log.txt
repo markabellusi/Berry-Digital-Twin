@@ -1,0 +1,233 @@
+[10:29:36.05] - *** STARTING EXECUTION ***
+[10:29:36.06] - Hopper > Published hopper state: 'State_H1', Completion: 16.67%
+[10:29:36.06] - Blender > Produced blender state: 'State_B1', Completion: 16.67%
+[10:29:36.06] - Blender > Starting to consume
+[10:29:36.06] - Blender received: State_H1
+[10:29:36.07] - Extruder > Produced extruder state: 'State_E1', Completion: 16.67%
+[10:29:36.07] - Extruder > Starting to consume
+[10:29:36.07] - Extruder received: State_B1
+[10:29:36.57] - Blender received: State_E1
+[10:29:36.67] - Extruder > Produced extruder state: 'State_E2', Completion: 33.33%
+[10:29:36.67] - Extruder received: State_E2
+[10:29:36.86] - Blender > Produced blender state: 'State_B2', Completion: 33.33%
+[10:29:37.06] - Hopper > Published hopper state: 'State_H2', Completion: 33.33%
+[10:29:37.07] - Blender received: State_B2
+[10:29:37.17] - Extruder received: State_H2
+[10:29:37.27] - Extruder > Produced extruder state: 'State_E3', Completion: 50.00%
+[10:29:37.58] - Blender received: State_E3
+[10:29:37.67] - Blender > Produced blender state: 'State_B3', Completion: 50.00%
+[10:29:37.67] - Extruder received: State_B3
+[10:29:37.87] - Extruder > Produced extruder state: 'State_E4', Completion: 66.67%
+[10:29:38.07] - Hopper > Published hopper state: 'State_H3', Completion: 50.00%
+[10:29:38.08] - Blender received: State_E4
+[10:29:38.17] - Extruder received: State_H3
+[10:29:38.47] - Blender > Produced blender state: 'State_B4', Completion: 66.67%
+[10:29:38.48] - Extruder > Produced extruder state: 'State_E5', Completion: 83.33%
+[10:29:38.58] - Blender received: State_B4
+[10:29:38.67] - Extruder received: State_E5
+[10:29:39.07] - Hopper > Published hopper state: 'State_H4', Completion: 66.67%
+[10:29:39.08] - Extruder Run Count: 1
+[10:29:39.08] - 
+[10:29:39.08] -  Total Plastic Cup Count: 20
+[10:29:39.08] - 
+[10:29:39.08] - Extruder > Produced extruder state: 'ProductionComplete', Completion: 0.00%
+[10:29:39.08] - Blender received: State_H4
+[10:29:39.18] - Extruder received: ProductionComplete
+[10:29:39.27] - Blender > Produced blender state: 'State_B5', Completion: 83.33%
+[10:29:39.59] - Blender received: State_B5
+[10:29:39.69] - Extruder > Produced extruder state: 'State_E1', Completion: 16.67%
+[10:29:39.69] - Extruder received: State_E1
+[10:29:40.07] - Hopper > Published hopper state: 'State_H5', Completion: 83.33%
+[10:29:40.08] - Blender Run Count: 1
+[10:29:40.08] - Blender > Produced blender state: 'ProductionComplete', Completion: 0.00%
+[10:29:40.09] - Blender received: State_H5
+[10:29:40.19] - Extruder received: ProductionComplete
+[10:29:40.29] - Extruder > Produced extruder state: 'State_E2', Completion: 33.33%
+[10:29:40.59] - Blender received: State_E2
+[10:29:40.88] - Blender > Produced blender state: 'State_B1', Completion: 16.67%
+[10:29:40.88] - Extruder received: State_B1
+[10:29:40.89] - Extruder > Produced extruder state: 'State_E3', Completion: 50.00%
+[10:29:41.08] - Hopper Run Count: 1
+[10:29:41.08] - Hopper > Published hopper state: 'ProductionComplete', Completion: 0.00%
+[10:29:41.09] - Blender received: State_E3
+[10:29:41.38] - Extruder received: ProductionComplete
+[10:29:41.49] - Extruder > Produced extruder state: 'State_E4', Completion: 66.67%
+[10:29:41.59] - Blender received: State_E4
+[10:29:41.68] - Blender > Produced blender state: 'State_B2', Completion: 33.33%
+[10:29:41.88] - Extruder received: State_B2
+[10:29:42.08] - Hopper > Published hopper state: 'State_H1', Completion: 16.67%
+[10:29:42.09] - Extruder > Produced extruder state: 'State_E5', Completion: 83.33%
+[10:29:42.09] - Blender received: State_H1
+[10:29:42.38] - Extruder received: State_E5
+[10:29:42.48] - Blender > Produced blender state: 'State_B3', Completion: 50.00%
+[10:29:42.60] - Blender received: State_B3
+[10:29:42.69] - Extruder Run Count: 2
+[10:29:42.69] - 
+[10:29:42.70] -  Total Plastic Cup Count: 40
+[10:29:42.70] - 
+[10:29:42.70] - Extruder > Produced extruder state: 'ProductionComplete', Completion: 0.00%
+[10:29:42.89] - Extruder received: ProductionComplete
+[10:29:43.08] - Hopper > Published hopper state: 'State_H2', Completion: 33.33%
+[10:29:43.10] - Blender received: State_H2
+[10:29:43.28] - Blender > Produced blender state: 'State_B4', Completion: 66.67%
+[10:29:43.30] - Extruder > Produced extruder state: 'State_E1', Completion: 16.67%
+[10:29:43.39] - Extruder received: State_B4
+[10:29:43.60] - Blender received: State_E1
+[10:29:43.90] - Extruder received: State_E2
+[10:29:43.90] - Extruder > Produced extruder state: 'State_E2', Completion: 33.33%
+[10:29:44.09] - Blender > Produced blender state: 'State_B5', Completion: 83.33%
+[10:29:44.09] - Hopper > Published hopper state: 'State_H3', Completion: 50.00%
+[10:29:44.10] - Blender received: State_B5
+[10:29:44.41] - Extruder received: State_H3
+[10:29:44.51] - Extruder > Produced extruder state: 'State_E3', Completion: 50.00%
+[10:29:44.60] - Blender received: State_E3
+[10:29:44.89] - Blender Run Count: 2
+[10:29:44.89] - Blender > Produced blender state: 'ProductionComplete', Completion: 0.00%
+[10:29:44.91] - Extruder received: ProductionComplete
+[10:29:45.09] - Hopper > Published hopper state: 'State_H4', Completion: 66.67%
+[10:29:45.11] - Blender received: State_H4
+[10:29:45.12] - Extruder > Produced extruder state: 'State_E4', Completion: 66.67%
+[10:29:45.41] - Extruder received: State_E4
+[10:29:45.69] - Blender > Produced blender state: 'State_B1', Completion: 16.67%
+[10:29:45.69] - Blender received: State_B1
+[10:29:45.72] - Extruder > Produced extruder state: 'State_E5', Completion: 83.33%
+[10:29:45.91] - Extruder received: State_E5
+[10:29:46.09] - Hopper > Published hopper state: 'State_H5', Completion: 83.33%
+[10:29:46.19] - Blender received: State_H5
+[10:29:46.32] - Extruder Run Count: 3
+[10:29:46.33] - 
+[10:29:46.33] -  Total Plastic Cup Count: 60
+[10:29:46.33] - 
+[10:29:46.33] - Extruder > Produced extruder state: 'ProductionComplete', Completion: 0.00%
+[10:29:46.42] - Extruder received: ProductionComplete
+[10:29:46.49] - Blender > Produced blender state: 'State_B2', Completion: 33.33%
+[10:29:46.70] - Blender received: State_B2
+[10:29:46.92] - Simulating an error in Extruder.
+[10:29:46.92] - Extruder error: Extruder consumed too much.
+[10:29:46.92] - Extruder is done consuming.
+[10:29:46.93] - Hopper was interrupted.
+[10:29:46.93] - Hopper is done producing.
+[10:29:46.93] - Extruder was interrupted.
+[10:29:46.93] - Extruder is done producing.
+[10:29:46.93] - Blender was interrupted.
+[10:29:46.93] - Blender is done producing.
+[10:29:46.93] - Blender was interrupted.
+[10:29:46.93] - Blender is done consuming.
+[10:29:46.93] - *** EXECUTION COMPLETE ***
+[10:29:46.93] - Done!
+[11:40:20.11] - *** STARTING EXECUTION ***
+[11:40:20.12] - Hopper > Published hopper state: 'State_H1', Completion: 16.67%
+[11:40:20.13] - Blender > Produced blender state: 'State_B1', Completion: 16.67%
+[11:40:20.13] - Blender > Starting to consume
+[11:40:20.13] - Blender received: State_H1
+[11:40:20.13] - Extruder > Produced extruder state: 'State_E1', Completion: 16.67%
+[11:40:20.13] - Extruder > Starting to consume
+[11:40:20.13] - Extruder received: State_B1
+[11:40:20.64] - Extruder received: State_E1
+[11:40:20.73] - Extruder > Produced extruder state: 'State_E2', Completion: 33.33%
+[11:40:20.73] - Blender received: State_E2
+[11:40:20.93] - Blender > Produced blender state: 'State_B2', Completion: 33.33%
+[11:40:21.13] - Hopper > Published hopper state: 'State_H2', Completion: 33.33%
+[11:40:21.14] - Extruder received: State_B2
+[11:40:21.23] - Blender received: State_H2
+[11:40:21.33] - Extruder > Produced extruder state: 'State_E3', Completion: 50.00%
+[11:40:21.64] - Extruder received: State_E3
+[11:40:21.73] - Blender > Produced blender state: 'State_B3', Completion: 50.00%
+[11:40:21.74] - Blender received: State_B3
+[11:40:21.94] - Extruder > Produced extruder state: 'State_E4', Completion: 66.67%
+[11:40:22.13] - Hopper > Published hopper state: 'State_H3', Completion: 50.00%
+[11:40:22.14] - Extruder received: State_E4
+[11:40:22.24] - Blender received: State_H3
+[11:40:22.53] - Blender > Produced blender state: 'State_B4', Completion: 66.67%
+[11:40:22.54] - Extruder > Produced extruder state: 'State_E5', Completion: 83.33%
+[11:40:22.65] - Extruder received: State_B4
+[11:40:22.74] - Blender received: State_E5
+[11:40:23.13] - Hopper > Published hopper state: 'State_H4', Completion: 66.67%
+[11:40:23.14] - Extruder Run Count: 1
+[11:40:23.15] - 
+[11:40:23.15] -  Total Plastic Cup Count: 20
+[11:40:23.15] - 
+[11:40:23.15] - Extruder > Produced extruder state: 'ProductionComplete', Completion: 0.00%
+[11:40:23.15] - Extruder received: State_H4
+[11:40:23.25] - Blender received: ProductionComplete
+[11:40:23.34] - Blender > Produced blender state: 'State_B5', Completion: 83.33%
+[11:40:23.65] - Extruder received: State_B5
+[11:40:23.75] - Extruder > Produced extruder state: 'State_E1', Completion: 16.67%
+[11:40:23.75] - Blender received: State_E1
+[11:40:24.14] - Hopper > Published hopper state: 'State_H5', Completion: 83.33%
+[11:40:24.14] - Blender Run Count: 1
+[11:40:24.14] - Blender > Produced blender state: 'ProductionComplete', Completion: 0.00%
+[11:40:24.15] - Extruder received: State_H5
+[11:40:24.25] - Blender received: ProductionComplete
+[11:40:24.35] - Extruder > Produced extruder state: 'State_E2', Completion: 33.33%
+[11:40:24.66] - Extruder received: State_E2
+[11:40:24.94] - Blender > Produced blender state: 'State_B1', Completion: 16.67%
+[11:40:24.94] - Blender received: State_B1
+[11:40:24.95] - Extruder > Produced extruder state: 'State_E3', Completion: 50.00%
+[11:40:25.14] - Hopper Run Count: 1
+[11:40:25.14] - Hopper > Published hopper state: 'ProductionComplete', Completion: 0.00%
+[11:40:25.16] - Extruder received: State_E3
+[11:40:25.44] - Blender received: ProductionComplete
+[11:40:25.55] - Extruder > Produced extruder state: 'State_E4', Completion: 66.67%
+[11:40:25.66] - Extruder received: State_E4
+[11:40:25.74] - Blender > Produced blender state: 'State_B2', Completion: 33.33%
+[11:40:25.94] - Blender received: State_B2
+[11:40:26.14] - Hopper > Published hopper state: 'State_H1', Completion: 16.67%
+[11:40:26.15] - Extruder > Produced extruder state: 'State_E5', Completion: 83.33%
+[11:40:26.16] - Extruder received: State_H1
+[11:40:26.45] - Blender received: State_E5
+[11:40:26.54] - Blender > Produced blender state: 'State_B3', Completion: 50.00%
+[11:40:26.67] - Extruder received: State_B3
+[11:40:26.76] - Extruder Run Count: 2
+[11:40:26.76] - 
+[11:40:26.76] -  Total Plastic Cup Count: 40
+[11:40:26.76] - 
+[11:40:26.76] - Extruder > Produced extruder state: 'ProductionComplete', Completion: 0.00%
+[11:40:26.95] - Blender received: ProductionComplete
+[11:40:27.14] - Hopper > Published hopper state: 'State_H2', Completion: 33.33%
+[11:40:27.17] - Extruder received: State_H2
+[11:40:27.34] - Blender > Produced blender state: 'State_B4', Completion: 66.67%
+[11:40:27.36] - Extruder > Produced extruder state: 'State_E1', Completion: 16.67%
+[11:40:27.45] - Blender received: State_B4
+[11:40:27.67] - Extruder received: State_E1
+[11:40:27.97] - Extruder > Produced extruder state: 'State_E2', Completion: 33.33%
+[11:40:27.97] - Blender received: State_E2
+[11:40:28.14] - Hopper > Published hopper state: 'State_H3', Completion: 50.00%
+[11:40:28.14] - Blender > Produced blender state: 'State_B5', Completion: 83.33%
+[11:40:28.18] - Extruder received: State_H3
+[11:40:28.47] - Blender received: State_B5
+[11:40:28.57] - Extruder > Produced extruder state: 'State_E3', Completion: 50.00%
+[11:40:28.68] - Extruder received: State_E3
+[11:40:28.95] - Blender Run Count: 2
+[11:40:28.95] - Blender > Produced blender state: 'ProductionComplete', Completion: 0.00%
+[11:40:28.97] - Blender received: ProductionComplete
+[11:40:29.15] - Hopper > Published hopper state: 'State_H4', Completion: 66.67%
+[11:40:29.17] - Extruder > Produced extruder state: 'State_E4', Completion: 66.67%
+[11:40:29.18] - Extruder received: State_H4
+[11:40:29.47] - Blender received: State_E4
+[11:40:29.75] - Blender > Produced blender state: 'State_B1', Completion: 16.67%
+[11:40:29.75] - Extruder received: State_B1
+[11:40:29.77] - Extruder > Produced extruder state: 'State_E5', Completion: 83.33%
+[11:40:29.97] - Blender received: State_E5
+[11:40:30.15] - Hopper > Published hopper state: 'State_H5', Completion: 83.33%
+[11:40:30.25] - Extruder received: State_H5
+[11:40:30.37] - Extruder Run Count: 3
+[11:40:30.37] - 
+[11:40:30.38] -  Total Plastic Cup Count: 60
+[11:40:30.38] - 
+[11:40:30.38] - Extruder > Produced extruder state: 'ProductionComplete', Completion: 0.00%
+[11:40:30.48] - Blender received: ProductionComplete
+[11:40:30.55] - Blender > Produced blender state: 'State_B2', Completion: 33.33%
+[11:40:30.76] - Simulating an error in Extruder.
+[11:40:30.76] - Extruder error: Extruder consumed too much.
+[11:40:30.76] - Extruder is done consuming.
+[11:40:30.77] - Blender was interrupted.
+[11:40:30.77] - Blender is done producing.
+[11:40:30.77] - Hopper was interrupted.
+[11:40:30.77] - Extruder was interrupted.
+[11:40:30.77] - Hopper is done producing.
+[11:40:30.77] - Blender was interrupted.
+[11:40:30.77] - Blender is done consuming.
+[11:40:30.77] - Extruder is done producing.
+[11:40:30.77] - *** EXECUTION COMPLETE ***
+[11:40:30.77] - Done!

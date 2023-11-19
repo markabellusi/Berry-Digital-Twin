@@ -1,0 +1,14 @@
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/bin/Debug/net7.0/DEV-Digtial-Twin
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/bin/Debug/net7.0/DEV-Digtial-Twin.deps.json
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/bin/Debug/net7.0/DEV-Digtial-Twin.runtimeconfig.json
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/bin/Debug/net7.0/DEV-Digtial-Twin.dll
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/bin/Debug/net7.0/DEV-Digtial-Twin.pdb
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/obj/Debug/net7.0/DEV-Digtial-Twin.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/obj/Debug/net7.0/DEV-Digtial-Twin.AssemblyInfoInputs.cache
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/obj/Debug/net7.0/DEV-Digtial-Twin.AssemblyInfo.cs
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/obj/Debug/net7.0/DEV-Digtial-Twin.csproj.CoreCompileInputs.cache
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/obj/Debug/net7.0/DEV-Digtial-Twin.dll
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/obj/Debug/net7.0/refint/DEV-Digtial-Twin.dll
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/obj/Debug/net7.0/DEV-Digtial-Twin.pdb
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/obj/Debug/net7.0/DEV-Digtial-Twin.genruntimeconfig.cache
+/Users/mark/Swag/School/CIS 477/1 -twins/DEV-Digtial-Twin/obj/Debug/net7.0/ref/DEV-Digtial-Twin.dll
